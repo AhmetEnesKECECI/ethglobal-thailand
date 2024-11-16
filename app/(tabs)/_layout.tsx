@@ -26,13 +26,6 @@ export default function TabLayout() {
         tabBarVariant: "uikit",
 
         tabBarStyle: {
-          ...Platform.select({
-            ios: {
-              // Use a transparent background on iOS to show the blur effect
-              position: "absolute",
-            },
-            default: {},
-          }),
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",

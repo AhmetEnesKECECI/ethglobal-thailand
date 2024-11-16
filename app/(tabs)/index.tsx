@@ -1,6 +1,6 @@
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, TextInput, Pressable, Platform } from "react-native";
 import React, { useRef, useState } from "react";
-import MapView, { MapMarker } from "react-native-maps";
+import MapView, { MapMarker, PROVIDER_GOOGLE } from "react-native-maps";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { FontAwesome, Feather } from "@expo/vector-icons";
 
@@ -61,9 +61,11 @@ const MapScreen = () => {
               key={JSON.stringify(coor)}
               coordinate={coor}
             >
-              <View className="item-center justify-center ">
-                <FontAwesome name="map-marker" color={"#7842ED"} size={32} />
-              </View>
+              {Platform.OS !== "ios" && (
+                <View className="item-center justify-center ">
+                  <FontAwesome name="map-marker" color={"#7842ED"} size={32} />
+                </View>
+              )}
             </MapMarker>
           ))}
         </MapView>

@@ -10,9 +10,10 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "config": {
+      "bundleIdentifier": "com.ahmeteneskcc.easypassmobile",
+      "config":{
         "googleMapsApiKey": "AIzaSyByLD8vnL6IT6iwMmb4PJwyqOSr9BG6u4I"
-      }
+      } 
     },
     "android": {
       "config": {

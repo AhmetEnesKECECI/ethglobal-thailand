@@ -12,7 +12,14 @@ import "react-native-reanimated";
 import "../global.css";
 
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { View } from "react-native";
+import { Text, View } from "react-native";
+import OnboardingScreen from "./onboarding";
+import {
+  MMKVLoader,
+  MMKVInstance,
+  useMMKVStorage,
+} from "react-native-mmkv-storage";
+import { storage } from "@/constants";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -23,14 +30,10 @@ export default function RootLayout() {
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
   });
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+  const [isFirstTime, set] = useMMKVStorage("is-first-time", storage, true);
 
-  if (!loaded) {
-    return null;
+  if (isFirstTime) {
+    return <OnboardingScreen />;
   }
 
   return (
