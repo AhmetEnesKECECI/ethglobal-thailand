@@ -13,13 +13,13 @@ const MapScreen = () => {
 
   const mapRef = useRef<MapView | null>(null);
 
+  const [waiting, setWaiting] = useState(false);
+
   const handleShare = async () => {
     const uri = await captureRef(mapRef, {
       format: "png",
       quality: 1,
     });
-
-    console.log(uri);
   };
 
   return (
